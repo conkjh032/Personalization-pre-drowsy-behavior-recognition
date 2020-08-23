@@ -87,13 +87,12 @@ VGG는 2014 ImageNet Large Scale Visual Recognition Challenge에서 굉장히 �
     * visualization_data/images_train에 있는 drowsy와 normal에 데이터를 넣어주셔야 그래프를 그릴 수 있습니다.
     * 녹화된 비디오로 테스트 하고 싶으면 data/video test directory에 동영상을 넣어주시면 됩니다.
 
-
 2. 실행
     * Prompt에서 'python main.py'를 입력하면 프로그램이 실행됩니다.
     * Prompt에서 'embedding_visualization.py'를 입력하면 그래프에 나타난 데이터의 상태를 볼 수 있습니다.
     * 아래에 실행 방법을 간단하게 설명해 놓은 영상입니다.
     
-[![trial](https://i.ytimg.com/vi/EBulO0wkQpE/hq1.jpg)](https://youtu.be/EBulO0wkQpE)\
+[![trial](https://i.ytimg.com/vi/EBulO0wkQpE/hq1.jpg)](https://youtu.be/EBulO0wkQpE)
 
 (긴장해서 '파일'을 '폴더'라고 계속 말하고 있습니다...)
 
