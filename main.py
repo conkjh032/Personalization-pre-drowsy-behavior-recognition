@@ -3,10 +3,9 @@ import glob
 import torch
 import torch.optim as optim
 
-from siameseNet import *
+from siamese_net import *
 from data_loader import Data_loader
 from kjh_model import KJH_Model
-
 
 def set_model():
     dataset_path = 'data'
@@ -28,7 +27,6 @@ def set_model():
                           batch_size=batch_size)
 
     return kjh_model
-
 
 def train_model(model):
     # bring the path of dataset
@@ -73,6 +71,10 @@ def train_model(model):
         print("[INFO] no train")
 
 def main():
+
+    # if you want to make a model first
+    #model = set_model()
+    #model.fit()
 
     print("[INFO] System operation...")
 
