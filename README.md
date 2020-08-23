@@ -1,4 +1,4 @@
-# Prersonalization-pre-drowsy-behavior-recognition
+# Personalization-pre-drowsy-behavior-recognition
 
 운전중에 졸음이 올 때, 특정한 행동을 하는 것을 관찰하게 되었습니다. 이것을 '졸음을 깨기 위한 행동'이라고 하겠습니다. 
 이 프로젝트는 '졸음을 깨기 위한 행동'을 자동으로 학습하여 각각의 사용자에 맞는 모델이 만들어지도록 하는 알고리즘입니다.
