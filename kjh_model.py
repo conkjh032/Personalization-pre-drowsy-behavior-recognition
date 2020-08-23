@@ -148,7 +148,7 @@ class KJH_Model:
         output1, output2 = model.siamese_get_embeddings(image, frame)
         euclidean_distance = torch.cdist(output1, output2).item()
         # euclidean_distance = F.pairwise_distance(output1, output2).item()
-        print("similarity: {:.2f}".format(euclidean_distance))
+        print("dissimilarity: {:.2f}".format(euclidean_distance))
 
         # If the distance is lower than threshold, alarm the driver to take some rest or to refresh
         if(euclidean_distance < 0.65):
