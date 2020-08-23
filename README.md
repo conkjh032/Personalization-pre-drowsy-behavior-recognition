@@ -81,6 +81,15 @@ VGG는 2014 ImageNet Large Scale Visual Recognition Challenge에서 굉장히 �
 
 ### Run :laughing:
 
+1. 실행시키기 전에 할 일
+
+    * 데이터 채우기
+        * data/images_train directory에 있는 drowsy와 normal에 데이터를 넣어주셔야 학습이 가능합니다. 
+        * 학습된 모델은 checkpoints directory에 저장이 됩니다.
+        * visualization_data/images_train에 있는 drowsy와 normal에 데이터를 넣어주셔야 그래프를 그릴 수 있습니다.
+        * 녹화된 비디오로 테스트 하고 싶으면 data/video test directory에 동영상을 넣어주시면 됩니다.
+        
+
 &nbsp;
 &nbsp;
 
