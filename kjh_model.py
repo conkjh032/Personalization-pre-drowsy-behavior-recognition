@@ -13,9 +13,8 @@ from imutils import face_utils
 import matplotlib.pyplot as plt
 import torch.nn.functional as F
 from scipy.spatial import distance as dist
-from pynput.keyboard import Listener, Key
 
-from siameseNet import *
+from siamese_net import *
 from loss_functions import *
 
 class KJH_Model:
@@ -69,9 +68,7 @@ class KJH_Model:
 
         running_loss = 0.0
 
-        # 묶여진 데이터는 for문으로 해서 min_batch 마다 학습된다.
-        # 데이터 형식을 tensor로 바꾸는 거 잊지말고
-
+        # coupled data will be train on every mini_batch
         pack_of_data = self.split_to_batch(data, label)
 
         # iterations
@@ -146,6 +143,8 @@ class KJH_Model:
         frame = frame.to(self.device)
 
         model.to(self.device)
+
+        # compute the euclidean distances between the anchor image and video image coming
         output1, output2 = model.siamese_get_embeddings(image, frame)
         euclidean_distance = torch.cdist(output1, output2).item()
         # euclidean_distance = F.pairwise_distance(output1, output2).item()
@@ -223,9 +222,6 @@ class KJH_Model:
 
         print("[INFO] starting video stream thread...")
 
-        # grab the frame from the threaded video file stream, resize
-        # it, and convert it to grayscale
-
         while(True):
 
             ret, frame = cap.read()
@@ -241,13 +237,10 @@ class KJH_Model:
 
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-            # detect faces in the grayscale frame
             rects = detector(gray, 0)
 
             for rect in rects:
-                # determine the facial landmarks for the face region, then
-                # convert the facial landmark (x, y)-coordinates to a NumPy
-                # array
+
                 shape = predictor(gray, rect)
                 shape = face_utils.shape_to_np(shape)
 
@@ -261,8 +254,6 @@ class KJH_Model:
                 # average the eye aspect ratio together for both eyes
                 ear = (leftEAR + rightEAR) / 2.0
 
-                # compute the convex hull for the left and right eye, then
-                # visualize each of the eyes
                 leftEyeHull = cv2.convexHull(leftEye)
                 rightEyeHull = cv2.convexHull(rightEye)
                 cv2.drawContours(frame, [leftEyeHull], -1, (0, 255, 0), 1)
@@ -283,9 +274,6 @@ class KJH_Model:
                         if not BLINK_ALARM_ON:
                             BLINK_ALARM_ON = True
 
-                            # check to see if an alarm file was supplied,
-                            # and if so, start a thread to have the alarm
-                            # sound played in the background
                             alarm = Thread(target=self.sound_alarm, args=('alarm.wav',))
                             alarm.deamon = True
                             alarm.start()
@@ -316,7 +304,6 @@ class KJH_Model:
                             + str(date.year) + "_" + str(date.month) + "_"
                             + str(date.day) + "_" + str(date.second) + '.png', frame)
 
-            # show the frame
             cv2.imshow("Driving", frame)
             key = cv2.waitKey(1) & 0xFF
 

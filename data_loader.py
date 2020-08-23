@@ -33,6 +33,7 @@ class Data_loader:
         else:
             self.use_agumentation = []
 
+    # find all data path and gather
     def find_data_path(self):
 
         data_path = os.path.join(self.dataset_path, 'images_train')
@@ -50,6 +51,7 @@ class Data_loader:
         # state_path = data/drowsy, data/normal
 
         # evaluation_dictionary. I don't use it. I'd like to use validation
+        # However, i don't have a lot of data
         for state in os.listdir(evaluation_path):
             evaluation_list = []
             state_path = os.path.join(evaluation_path, state)
@@ -58,6 +60,7 @@ class Data_loader:
                 evaluation_list.append(image_path)
             self.evaluation_dictionary[state] = evaluation_list
 
+    # augmentation
     def createAugmentor(self):
         rotatation_range = [-10, 10]
         shear_range = [-0.3 * 180 / math.pi, 0.3 * 180 / math.pi]
@@ -66,7 +69,7 @@ class Data_loader:
 
         return ImageAugmentor(0.5, shear_range, rotatation_range, zoom_range, shift_range)
 
-
+    # split data into train and validation
     def split_train_datasets(self):
         """
         split the dataset in train and validation
@@ -87,6 +90,7 @@ class Data_loader:
         self._validation_image_paths['drowsy'] = drowsy_validation_image_paths
         self._validation_image_paths['normal'] = normal_validation_image_paths
 
+    # after collect all data path, it converts path list to image and label
     def _convert_path_list_to_images_and_labels(self, path_list, is_one_shot_task):
 
         num_of_pairs = len(path_list) // 2
@@ -113,7 +117,7 @@ class Data_loader:
             image = (image - image.mean()) / image.std()
             pairs_of_images[1][pair, :, :, :] = image
 
-            # AA면 1, AB면 0
+            # if AA, 1, if AB, 0.
             if not is_one_shot_task:
                 if (pair + 1) % 2 == 0:
                     labels[pair] = 0
@@ -128,7 +132,7 @@ class Data_loader:
                 else:
                     labels[pair] = 0
 
-        #shuffling
+        # shuffling
         if not is_one_shot_task:
             random_shuffle = np.random.permutation(num_of_pairs)
             labels = labels[random_shuffle]
@@ -193,16 +197,16 @@ class Data_loader:
         else:
             self._current_train_state_index = 0
 
-        #check AA AB AA AB... or BB BA BB BA...
-        #print("images_path: ", images_path)
-        #print("images_paht size", np.shape(images_path))
+        # check AA AB AA AB... or BB BA BB BA...
+        # print("images_path: ", images_path)
+        # print("images_paht size", np.shape(images_path))
 
         images, labels = self._convert_path_list_to_images_and_labels(images_path, is_one_shot_task=False)
 
         # check if label and image are correct
-        #print("shape of image metrix: ", np.shape(images))
-        #print("labels: ", labels[:7])
-        #for i in range(7):
+        # print("shape of image metrix: ", np.shape(images))
+        # print("labels: ", labels[:7])
+        # for i in range(7):
         #    img = np.array(images[1][i])
         #    print(img.shape)
         #    cv2.imshow('123', img)
