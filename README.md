@@ -30,7 +30,7 @@
 ## Documentation
 
 
-개발의 전반적인 과정은 [블로그](https://conkjh032.tistory.com/)에 올려놓을 계획입니다. ~~(현재 구직활동으로 바뻐서...)~~
+개발의 전반적인 과정은 [블로그](https://conkjh032.tistory.com/)에 올려놓을 계획입니다.
 
 &nbsp;
 &nbsp;
@@ -94,7 +94,7 @@ VGG는 2014 ImageNet Large Scale Visual Recognition Challenge에서 굉장히 �
     
 [![trial](https://i.ytimg.com/vi/EBulO0wkQpE/hq1.jpg)](https://youtu.be/EBulO0wkQpE)
 
-(긴장해서 '파일'을 '폴더'라고 계속 말하고 있습니다...)
+
 
 &nbsp;
 &nbsp;
