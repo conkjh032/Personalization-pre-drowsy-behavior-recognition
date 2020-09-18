@@ -126,7 +126,7 @@ VGG는 2014 ImageNet Large Scale Visual Recognition Challenge에서 굉장히 �
 
 ## Test :eyes:
 
-아래 두 개의 동영상으로 모델의 성능을 확인하실 수 있습니다.
+아래 두 개의 동영상으로 모델의 성능을 확인하실 수 있습니다. 클릭!하시면 유튜브로 연결됩니다.
 
 [![test case 1](https://i.ytimg.com/vi/yXfSwO3CmXE/hq1.jpg)](https://youtu.be/yXfSwO3CmXE)\
 * 위 동영상은 운전자가 졸음이 오는 것을 느끼고 뒷목을 마사지하는 모습이 담겨있습니다. Dissimilarity가 일반 운전을 할 때, dissimilarity가 1.0 이상으로 출력되고 있습니다. 뒷목을 마사지하는 과정에 dissimilarity가 1.0 이하로 내려갑니다.
