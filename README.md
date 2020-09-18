@@ -134,7 +134,7 @@ VGG는 2014 ImageNet Large Scale Visual Recognition Challenge에서 굉장히 �
 &nbsp;
 
 [![test case 2](https://i.ytimg.com/vi/dRNe7GP0RvE/hq1.jpg)](https://youtu.be/dRNe7GP0RvE)\
-* 위 동영상은 운전자가 졸음이 오는 것을 느끼고 관자놀이를 누르는 모습이 담겨있습니다. Dissimilarity가 일반 운전을 할 때, dissimilarity가 1.0 이상으로 출력되고 있습니다. 뒷목을 마사지하는 과정에 dissimilarity가 1.0 이하로 내려갑니다.
+* 위 동영상은 운전자가 졸음이 오는 것을 느끼고 관자놀이를 누르는 모습이 담겨있습니다. Dissimilarity가 일반 운전을 할 때, dissimilarity가 1.0 이상으로 출력되고 있습니다. 관자놀이를 마사지하는 과정에 dissimilarity가 1.0 이하로 내려갑니다.
 
 &nbsp;
 &nbsp;
