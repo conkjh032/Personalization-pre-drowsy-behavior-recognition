@@ -1,4 +1,3 @@
-import os
 import gc
 import cv2
 import dlib
@@ -11,7 +10,6 @@ import numpy as np
 from threading import Thread
 from imutils import face_utils
 import matplotlib.pyplot as plt
-import torch.nn.functional as F
 from scipy.spatial import distance as dist
 
 from siamese_net import *
@@ -177,6 +175,7 @@ class KJH_Model:
 
     def try_camera(self, mode='blink detection', checkpoint=None):
 
+        # If you want to use webcam, 0, or you want to video file, put the path of file.
         cap = cv2.VideoCapture("data/video test/drowsy2.mp4")
         start_time = 0
 

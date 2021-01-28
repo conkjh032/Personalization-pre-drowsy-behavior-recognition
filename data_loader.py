@@ -103,7 +103,6 @@ class Data_loader:
             # from the list AA AB AA AB, pick only front A
             image = Image.open(path_list[pair * 2])
             image = image.resize((self.image_height, self.image_width))
-            # you might change data type to uint8 or others
             image = np.asarray(image).astype(np.float64)
             #image = (image - np.min(image)) / (np.max(image) - np.min(image))
             image = (image - image.mean()) / image.std()

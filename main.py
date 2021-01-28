@@ -1,7 +1,9 @@
 import os
 import glob
 import torch
+import cv2
 import torch.optim as optim
+from matplotlib import pyplot as plt
 
 from siamese_net import *
 from data_loader import Data_loader
@@ -20,7 +22,7 @@ def set_model():
 
     embeddingNetSiamese = EmbeddingNetSiamese()
 
-    optimizer = optim.Adam(embeddingNetSiamese.parameters(), lr=0.001, betas=(0.9, 0.999), weight_decay=0.0005)
+    optimizer = optim.Adam(embeddingNetSiamese.parameters(), lr=0.001, betas=(0.9, 0.999), weight_decay=0.0005, amsgrad=True)
 
     kjh_model = KJH_Model(data=pairs_of_images, label=labels, model=embeddingNetSiamese,
                           optimizer=optimizer, epochs=epoch,
@@ -29,11 +31,11 @@ def set_model():
     return kjh_model
 
 def train_model(model):
-    # bring the path of dataset
+    # bring the paths of dataset
     drowsy_dataset_path = 'data/images_train/drowsy'
     normal_dataset_path = 'data/images_train/normal'
 
-    # check how many data set was saved before
+    # check how many data set were saved before
     file = open("data/record_of_num_of_dataset.txt", "r")
     is_empty = os.path.getsize("data/record_of_num_of_dataset.txt")
 
@@ -62,7 +64,7 @@ def train_model(model):
         diff_normal = now_num_of_normal - latest_num_of_normal
 
         # if the difference between current data and previous data is greater than 16, train the model
-        if ((diff_drowsy > 16 or diff_normal > 16)):
+        if ((diff_drowsy > 8 or diff_normal > 8)):
             model.fit()
             print("[INFO] train finished")
         else:
@@ -70,7 +72,20 @@ def train_model(model):
     else:
         print("[INFO] no train")
 
+
+def histogram():
+    img = cv2.imread("data/images_train/drowsy/1000.png")
+
+    color = ("b", "g", "r")
+    for i, col in enumerate(color):
+        hist = cv2.calcHist([img], [i], None, [256], [0, 256])
+        plt.plot(hist, color = col)
+        plt.xlim([0, 256])
+    plt.show()
+
 def main():
+
+    # histogram()
 
     # if you want to make a model first
     #model = set_model()
