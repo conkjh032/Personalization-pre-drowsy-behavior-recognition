@@ -119,10 +119,6 @@ VGG는 2014 ImageNet Large Scale Visual Recognition Challenge에서 굉장히 �
 
 * Loss는 초반에 급하강 합니다. 그리고 서서히 감소했습니다.
 
-* Loss가 중간에 급격하게 상승하는 경우가 없는 것을 보아 gradient exploding은 없어 보입니다.
-
-* Loss가 중간에 멈추는 경우가 없는 것을 보아 global optimal에 빠지지 않은 것으로 보입니다.
-
 
 &nbsp;
 &nbsp;
@@ -166,10 +162,6 @@ VGG는 2014 ImageNet Large Scale Visual Recognition Challenge에서 굉장히 �
 ## Question_Issues
 
 * 이 프로젝트에 대해서 궁금한 점이 있으신 분은 <conkjh0321@gmail.com>으로 문의해 주시면 답변해 드리겠습니다.
-
-* 동영상에서 뒷목을 마사지하거나 관자놀이를 만질 때 dissimilarity가 1.0 이상 출력되는 경우도 있습니다. 그 이유는 다음과 같습니다. Input 이미지가 2장 필요합니다. A를 카메라에서 계속 들어오는 frame이라고 하면, B는 data set에서 지정한 특정 이미지 한 장 입니다. 따라서, A라는 특정 이미지와 유사한 행동이 B 이미지에 담긴다면 dissimilarity가 작아집니다. 이 문제에 대해서는 10월 말에 업데이트 하겠습니다.
-
-* Data의 양이 적어서 Validation을 진행할 수 없어서 Train과 Test만 진행하였습니다.
 
 &nbsp;
 &nbsp;
